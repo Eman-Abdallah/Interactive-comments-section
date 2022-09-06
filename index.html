@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="./style.css">
+    <title>Frontend Mentor | Interactive comments section</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+        
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="model" id="modal">
+        <div class="deletebox">
+            <p class="title">Delete comment</p>
+            <p class="text">Are you sure you want to delete this comment ? This will delete the comment and can not be undone </p>
+            <div class="d-flex">
+                <button class="no" onclick="dontDelete()">no,cancel</button>
+                <button class="yes" onclick="doDelete()">yes,delete</button>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="card " id="card1">
+            <div class="d-flex">
+                <div class="shape">
+                    <img src="./images/icon-plus.svg" alt="">
+                    <div class="number" id="number1"></div>
+                    <img src="./images/icon-minus.svg" alt="">
+                </div>
+                <div class="content">
+                    <div class="d-flex">
+                        <div class="img">
+                            <img src="" id="avater1" alt="">
+                            <span id="name1" class="name">juliusomo </span>
+                            <span id="date1" class="date"> </span>
+                        </div>
+                        <button id="replay" class="replay" onclick="replay(1)">
+                          <img src="./images/icon-reply.svg" alt="">
+                           Replay</button>
+                    </div>
+                    <P class="comment" id="comment1"></P>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="replay myreplay" id="myreplay">
+            <div class="d-flex">
+                <div class="divider   only"></div>
+                <div class="replay-card">
+                    <div class="card">
+                        <div class="d-flex">
+                            <div class="shape">
+                                <img src="./images/icon-plus.svg" alt="">
+                                <div class="number">13</div>
+                                <img src="./images/icon-minus.svg" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="d-flex">
+                                    <div class="img">
+                                        <img src="./images/avatars/image-juliusomo.png" id="MYavater4" alt="">
+                                        <span class="name"> Juliusomo</span>
+                                        <span class="you"> you</span>
+                                        <span class="date"> Just now</span>
+                                    </div>
+                                    <div class="buttons d-flex">
+                                        <button id="delete" class="delete" onclick="deleteComment()">
+                                    <img src="./images/icon-delete.svg" alt="">
+                                     Delete</button>
+                                        <button id="replay" class="replay" onclick="edit()">
+                                    <img src="./images/icon-edit.svg" alt="">
+                                     Edit</button>
+                                    </div>
+
+                                </div>
+
+                                <p class="comment" id="comment5"></p>
+
+                            </div>
+                        </div>
+                        <button id="update" class="update">Update</button>
+                    </div>
+
+                </div>
+            </div>
+        </div> -->
+        <div class="card" id="card2">
+            <div class="d-flex">
+                <div class="shape">
+                    <img src="./images/icon-plus.svg" alt="">
+                    <div class="number" id="number2"></div>
+                    <img src="./images/icon-minus.svg" alt="">
+                </div>
+                <div class="content">
+                    <div class="d-flex">
+                        <div class="img">
+                            <img src="" id="avater2" alt="">
+                            <span id="name2" class="name"> </span>
+                            <span id="date2" class="date"> </span>
+                        </div>
+                        <button id="replay" class="replay" onclick="replay(2)">
+                          <img src="./images/icon-reply.svg" alt="">
+                           Replay</button>
+                    </div>
+                    <P class="comment" id="comment2"></P>
+                </div>
+            </div>
+        </div>
+        <div class="replay ">
+            <div class="d-flex">
+                <div class="divider"></div>
+                <div class="replay-card">
+                    <div class="card" id="card3">
+                        <div class="d-flex">
+                            <div class="shape">
+                                <img src="./images/icon-plus.svg" alt="">
+                                <div class="number" id="number3">13</div>
+                                <img src="./images/icon-minus.svg" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="d-flex">
+                                    <div class="img">
+                                        <img src="" id="avater3" alt="">
+                                        <span id="name3" class="name"> name</span>
+                                        <span id="date3" class="date"> last month</span>
+                                    </div>
+                                    <button id="replay" class="replay" onclick="replay(3)">
+                      <img src="./images/icon-reply.svg" alt="">
+                       Replay</button>
+                                </div>
+
+                                <p class="comment" id="comment3"></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" id="mycomment">
+                        <div class="d-flex">
+                            <div class="shape">
+                                <img src="./images/icon-plus.svg" alt="">
+                                <div class="number" id="number4">13</div>
+                                <img src="./images/icon-minus.svg" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="d-flex">
+                                    <div class="img">
+                                        <img src="" id="avater4" alt="">
+                                        <span id="name4" class="name"> name</span>
+                                        <span class="you"> you</span>
+                                        <span id="date4" class="date"> last month</span>
+                                    </div>
+                                    <div class="buttons d-flex">
+                                        <button id="delete" class="delete" onclick="deleteComment()">
+                                    <img src="./images/icon-delete.svg" alt="">
+                                     Delete</button>
+                                        <button id="edit" class="edit" onclick="edit()">
+                                    <img src="./images/icon-edit.svg" alt="">
+                                     Edit</button>
+                                    </div>
+
+                                </div>
+
+                                <p class="comment" id="comment4"></p>
+
+                            </div>
+                        </div>
+                        <button id="update" class="update">Update</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card add">
+            <div class="d-flex">
+
+                <div class="img">
+                    <img src="" id="myAvater" alt="">
+                </div>
+                <textarea name="addcomment" id="addcomment" class="addcomment" placeholder="Add a comment..."></textarea>
+                <button id="send" class="send">
+                        Send</button>
+            </div>
+
+
+        </div>
+    </main>
+
+    <footer class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://www.frontendmentor.io/profile/Eman-Abdallah">Eman Shaltoot</a>.
+    </footer>
+
+    <script>
+        let comment1 = document.getElementById("comment1")
+        let comment2 = document.getElementById("comment2")
+        let comment3 = document.getElementById("comment3")
+        let comment4 = document.getElementById("comment4")
+        let comment5 = document.getElementById("comment5")
+        let avater1 = document.getElementById("avater1")
+        let avater2 = document.getElementById("avater2")
+        let avater3 = document.getElementById("avater3")
+        let avater4 = document.getElementById("avater4")
+        let myAvater = document.getElementById("myAvater")
+
+        let name1 = document.getElementById("name1")
+        let name2 = document.getElementById("name2")
+        let name3 = document.getElementById("name3")
+        let name4 = document.getElementById("name4")
+        let date1 = document.getElementById("date1")
+        let date2 = document.getElementById("date2")
+        let date3 = document.getElementById("date3")
+        let date4 = document.getElementById("date4")
+        let number1 = document.getElementById("number1")
+        let number2 = document.getElementById("number2")
+        let number3 = document.getElementById("number3")
+        let number4 = document.getElementById("number4")
+
+
+        fetch("./data.json")
+            .then(response => {
+                return response.json();
+            })
+            .then(jsondata => {
+                comment1.innerText = jsondata["comments"][0].content
+                comment2.innerText = jsondata["comments"][1].content;
+
+                comment4.innerHTML = ` <p> <span class="replayTo">@${jsondata["comments"][1].replies[1].replyingTo }</span> ${jsondata["comments"][1].replies[1].content}</p>`;
+                comment3.innerHTML = ` <p> <span class="replayTo">@${jsondata["comments"][1].replies[0].replyingTo }</span> ${jsondata["comments"][1].replies[0].content}</p>`
+
+                console.log(jsondata.currentUser.image.png);
+                avater1.src = jsondata["comments"][0].user.image.png;
+                avater2.src = jsondata["comments"][1].user.image.png;
+                avater3.src = jsondata["comments"][1].replies[0].user.image.png;
+                avater4.src = jsondata["comments"][1].replies[1].user.image.png;
+                myAvater.src = jsondata.currentUser.image.png
+
+                name1.innerText = jsondata["comments"][0].user.username;
+                name2.innerText = jsondata["comments"][1].user.username;
+                name3.innerText = jsondata["comments"][1].replies[0].user.username;
+                name4.innerText = jsondata["comments"][1].replies[1].user.username;
+                date1.innerText = jsondata["comments"][0].createdAt;
+                date2.innerText = jsondata["comments"][1].createdAt;
+                date3.innerText = jsondata["comments"][1].replies[0].createdAt;
+                date4.innerText = jsondata["comments"][1].replies[1].createdAt;
+                number1.innerText = jsondata["comments"][0].score;
+                number2.innerText = jsondata["comments"][1].score;
+                number3.innerText = jsondata["comments"][1].replies[0].score;
+                number4.innerText = jsondata["comments"][1].replies[1].score;
+
+
+            });
+
+        const el = document.createElement("div")
+
+        function replay(id) {
+            // document.getElementById("addreplay").classList.toggle('active');
+            el.style.display = "block";
+            el.innerHTML = `  <div class="card addreplay" id="addreplay">
+            <div class="d-flex">
+
+                <div class="img">
+                    <img src="./images/avatars/image-juliusomo.png" alt="">
+                </div>
+                <textarea name="addcomment" id="addedreplay" class="addcomment" cols="55" rows="5" placeholder="Add a comment..."></textarea>
+                <button id="addR" class="send" onclick="addReplay(${id})">
+                  Replay</button>
+            </div>
+
+
+        </div>`;
+            console.log(el);
+
+            document.querySelector(`#card${id}`).after(el)
+
+
+        }
+
+        function edit() {
+            document.getElementById("update").classList.toggle('active');
+            document.getElementById("comment4").classList.toggle('clicked');
+            document.getElementById("comment4").setAttribute("contenteditable", "true");
+        }
+
+        function deleteComment() {
+            document.getElementById("modal").classList.toggle('active');
+            // document.getElementById("comment4").classList.toggle('clicked');
+            // document.getElementById("comment4").setAttribute("contenteditable", "true");
+        }
+
+        function dontDelete() {
+            document.getElementById("modal").classList.remove('active');
+
+        }
+
+        function doDelete() {
+            document.getElementById("modal").classList.remove('active');
+            document.getElementById("mycomment").style.display = 'none';
+
+        }
+
+        function addReplay(id) {
+            const myReplay = document.createElement("div");
+            myReplay.innerHTML = `<div class="replay myreplay" id="myreplay">
+            <div class="d-flex">
+                <div class="divider   only"></div>
+                <div class="replay-card">
+                    <div class="card">
+                        <div class="d-flex">
+                            <div class="shape">
+                                <img src="./images/icon-plus.svg" alt="">
+                                <div class="number">13</div>
+                                <img src="./images/icon-minus.svg" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="d-flex">
+                                    <div class="img">
+                                        <img src="./images/avatars/image-juliusomo.png" id="MYavater4" alt="">
+                                        <span class="name"> Juliusomo</span>
+                                        <span class="you"> you</span>
+                                        <span class="date"> Just now</span>
+                                    </div>
+                                    <div class="buttons special d-flex">
+                                        <button id="delete" class="delete" onclick="deleteComment()">
+                                    <img src="./images/icon-delete.svg" alt="">
+                                     Delete</button>
+                                        <button id="edit" class="edit" onclick="edit()">
+                                    <img src="./images/icon-edit.svg" alt="">
+                                     Edit</button>
+                                    </div>
+
+                                </div>
+
+                                <p class="comment" id="comment${id +4}"></p>
+
+                            </div>
+                        </div>
+                        <button id="update" class="update">Update</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>`;
+            console.log(myReplay);
+            document.querySelector(`#card${id}`).after(myReplay)
+
+            document.getElementById(`comment${id+4}`).innerHTML = `<p><span class="replayTo"> @${name1.innerText} </span> ${document.getElementById("addedreplay").value}</p>`;
+            console.log(`name${id}`);
+            el.style.display = "none";
+            console.log(document.getElementById("addedreplay").value);
+            // document.getElementById("addreplay").classList.add('active');
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>
